@@ -1,0 +1,209 @@
+{
+  "objetivos": [
+    {
+      "id": "I.1",
+      "titulo": "Técnicas de Integración",
+      "descripcion": "Verificación de fórmulas y métodos de sustitución",
+      "icono": "⚗️",
+      "problemas": [
+        {
+          "id": "I.1.1",
+          "objectiveId": "I.1",
+          "tipo": "verificacion_formula",
+          "enunciado": "Verificar (sin tablas): ∫ u²/(a+bu)² du = (1/b³)[bu - a²/(a+bu) - 2aln|a+bu|] + C",
+          "metodo_solucion": "Derivar lado derecho, mostrar que iguala integrando",
+          "pasos": [
+            "Elegir derivar lado derecho",
+            "Aplicar regla del cociente a a²/(a+bu)",
+            "Aplicar regla de la cadena a ln|a+bu|",
+            "Simplificar a denominador común (a+bu)²",
+            "Verificar que resultado iguala u²/(a+bu)²"
+          ],
+          "errores_comunes": [
+            "Olvidar regla de cadena en término ln",
+            "Error aritmético en simplificación",
+            "Falta valor absoluto en ln"
+          ],
+          "visualizacion": null,
+          "dificultad": "media",
+          "puntos_maximos": 100
+        },
+        {
+          "id": "I.1.2",
+          "objectiveId": "I.1",
+          "tipo": "integral_definida_sustitucion",
+          "enunciado": "Calcular ∫₁⁵ √(x-1)/x dx usando sustitución x-1 = t²",
+          "metodo_solucion": "U-sustitución con transformación de límites",
+          "pasos": [
+            "Establecer u = x-1, entonces u = t²",
+            "Encontrar x = t²+1, dx = 2t dt",
+            "Transformar límites: x=1→t=0, x=5→t=2",
+            "Sustituir: ∫₀² t/(t²+1) · 2t dt = ∫₀² 2t²/(t²+1) dt",
+            "Simplificar: 2∫₀² [1 - 1/(t²+1)] dt",
+            "Integrar: 2[t - arctan(t)]₀²",
+            "Evaluar: 2[2 - arctan(2)] = 4 - 2arctan(2)"
+          ],
+          "visualizacion": {
+            "tipo": "grafico_2D",
+            "mostrar": "y = √(x-1)/x, área sombreada de 1 a 5"
+          },
+          "dificultad": "media-dificil",
+          "puntos_maximos": 100
+        }
+      ]
+    },
+    {
+      "id": "I.2",
+      "titulo": "Integrales Impropias",
+      "descripcion": "Análisis de convergencia y volúmenes de revolución",
+      "icono": "🔭",
+      "problemas": [
+        {
+          "id": "I.2.1",
+          "objectiveId": "I.2",
+          "tipo": "convergencia_integral_impropia",
+          "enunciado": "Determinar convergencia: ∫₋∞^∞ 3e^x/(3e^(2x)+3) dx",
+          "metodo_solucion": "Dividir en dos límites, evaluar cada uno",
+          "pasos": [
+            "Dividir: ∫₋∞⁰ + ∫₀^∞",
+            "Izquierda: lim[a→-∞] ∫ₐ⁰ 3e^x/(3e^(2x)+3) dx",
+            "Sustituir u = 3e^(2x)+3, du = 6e^(2x) dx",
+            "Expresar e^x = √((u-3)/3)",
+            "Integrar y evaluar límite",
+            "Repetir para lado derecho",
+            "Verificar si ambos convergen; si sí, integral converge"
+          ],
+          "visualizacion": {
+            "tipo": "grafico_2D_con_limites",
+            "mostrar": "Función acercándose a eje-y mientras x→±∞"
+          },
+          "dificultad": "dificil",
+          "puntos_maximos": 100
+        },
+        {
+          "id": "I.2.2",
+          "objectiveId": "I.2",
+          "tipo": "volumen_revolucion_impropia",
+          "enunciado": "Volumen de sólido: rotar y=1/x^(3/2) alrededor eje-x, desde x=1 hasta ∞",
+          "metodo_solucion": "Método de discos con integral impropia",
+          "pasos": [
+            "V = π∫₁^∞ [1/x^(3/2)]² dx = π∫₁^∞ 1/x³ dx",
+            "Evaluar: π lim[b→∞] ∫₁^b x^(-3) dx",
+            "Antiderivada: -1/(2x²)",
+            "Aplicar límites: π lim[b→∞] [-1/(2b²) + 1/2]",
+            "Límite es π/2 (finito, converge)"
+          ],
+          "visualizacion": {
+            "tipo": "solido_3D",
+            "mostrar": "Forma de cuerno infinito, volumen codificado por color"
+          },
+          "dificultad": "dificil",
+          "puntos_maximos": 100
+        }
+      ]
+    },
+    {
+      "id": "II.1",
+      "titulo": "Sólidos de Revolución",
+      "descripcion": "Volúmenes de rotación y longitud de arco",
+      "icono": "📐",
+      "problemas": [
+        {
+          "id": "II.1.1",
+          "objectiveId": "II.1",
+          "tipo": "volumen_por_rotacion_acotada",
+          "enunciado": "Volumen de sólido: rotar región R alrededor eje-x, R acotada por 2y=2x+4 y 2y²-6y=4x",
+          "metodo_solucion": "Método de arandela (o capa, dependiendo del enfoque)",
+          "pasos": [
+            "Encontrar puntos de intersección de curvas",
+            "Trazar región R",
+            "Elegir método (arandela vs. capa)",
+            "Configurar integral V = π∫[R²-r²] dx o 2π∫ρh dy",
+            "Evaluar integral",
+            "Indicar volumen con unidades"
+          ],
+          "visualizacion": {
+            "tipo": "region_2D_y_solido_3D",
+            "mostrar": ["Región acotada R", "Sólido rotado con secciones transversales"]
+          },
+          "dificultad": "dificil",
+          "puntos_maximos": 100
+        },
+        {
+          "id": "II.1.2",
+          "objectiveId": "II.1",
+          "tipo": "longitud_arco",
+          "enunciado": "Longitud de arco de 9y²=x(x-3)² en Q1 desde x=1 hasta x=3",
+          "metodo_solucion": "Fórmula longitud arco L = ∫√(1+(dy/dx)²) dx",
+          "pasos": [
+            "Derivar implícitamente: 18y dy/dx = (x-3)² + 2x(x-3)",
+            "Resolver para dy/dx",
+            "Calcular 1 + (dy/dx)²",
+            "Simplificar bajo radical",
+            "Integrar de 1 a 3",
+            "Evaluar (puede necesitar sustitución)"
+          ],
+          "visualizacion": {
+            "tipo": "curva_2D_con_longitud",
+            "mostrar": "Curva en Q1 con longitud de arco trazada"
+          },
+          "dificultad": "dificil",
+          "puntos_maximos": 100
+        }
+      ]
+    },
+    {
+      "id": "II.2",
+      "titulo": "Coordenadas Polares",
+      "descripcion": "Ecuaciones paramétricas y áreas en coordenadas polares",
+      "icono": "🌀",
+      "problemas": [
+        {
+          "id": "II.2.1",
+          "objectiveId": "II.2",
+          "tipo": "recta_tangente_parametrica",
+          "enunciado": "Encontrar dy/dx y recta tangente en t=π/2 para x=t·sin(t), y=t·cos(t)",
+          "metodo_solucion": "Diferenciación paramétrica",
+          "pasos": [
+            "Calcular dx/dt = sin(t) + t·cos(t)",
+            "Calcular dy/dt = cos(t) - t·sin(t)",
+            "dy/dx = (dy/dt)/(dx/dt)",
+            "Evaluar en t=π/2",
+            "Encontrar punto (x,y) en t=π/2",
+            "Escribir recta tangente: y-y₀ = m(x-x₀)"
+          ],
+          "visualizacion": {
+            "tipo": "curva_parametrica",
+            "mostrar": "Curva con recta tangente en punto especificado"
+          },
+          "dificultad": "media",
+          "puntos_maximos": 100
+        },
+        {
+          "id": "II.2.2",
+          "objectiveId": "II.2",
+          "tipo": "area_polar_entre_curvas",
+          "enunciado": "Área dentro rosa r=2sin(2θ), fuera círculo r=2sin(θ)",
+          "metodo_solucion": "Fórmula de área polar con búsqueda de intersecciones",
+          "pasos": [
+            "Trazar ambas curvas (rosa 4 pétalos, círculo)",
+            "Encontrar intersecciones: 2sin(2θ) = 2sin(θ)",
+            "Usar sin(2θ)=2sin(θ)cos(θ): 4sin(θ)cos(θ)=2sin(θ)",
+            "Factorizar: 2sin(θ)[2cos(θ)-1]=0",
+            "Soluciones: θ=0,π/3,π,5π/3",
+            "Determinar curva exterior en [0,π/3]: rosa es exterior",
+            "A₁ = ½∫₀^(π/3) [4sin²(2θ) - 4sin²(θ)] dθ",
+            "Aplicar identidades trig, integrar",
+            "Área total = 4×A₁ (por simetría)"
+          ],
+          "visualizacion": {
+            "tipo": "trazado_polar_con_area",
+            "mostrar": ["Rosa y círculo", "Regiones objetivo sombreadas", "Puntos de intersección"]
+          },
+          "dificultad": "muy_dificil",
+          "puntos_maximos": 100
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+@import 'katex/dist/katex.min.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    font-weight: 400;
+    color-scheme: light;
+    color: #213547;
+    background-color: #ffffff;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka One', cursive;
+  }
+
+  /* Responsive typography */
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* KaTeX math rendering styles */
+  .katex {
+    font-size: 1.125em;
+  }
+
+  .katex-display {
+    margin: 1em 0;
+  }
+
+  /* Mobile math rendering */
+  @media (max-width: 640px) {
+    .katex {
+      font-size: 0.95em;
+    }
+  }
+}
+
+@layer components {
+  /* Custom component styles */
+  .btn-primary {
+    @apply bg-deep-blue text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all;
+  }
+
+  .btn-secondary {
+    @apply bg-vibrant-purple text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+  }
+
+  @media (max-width: 640px) {
+    .card {
+      @apply p-4;
+    }
+  }
+
+  .math-input {
+    @apply border-2 border-gray-300 rounded-lg px-4 py-2 focus:border-deep-blue focus:outline-none w-full font-mono text-base;
+  }
+
+  @media (max-width: 640px) {
+    .math-input {
+      @apply px-3 py-2 text-sm;
+    }
+  }
+}
+
+@layer utilities {
+  /* Custom utility classes */
+  .pattern-grid {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Screen reader only - accessible but visually hidden */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
