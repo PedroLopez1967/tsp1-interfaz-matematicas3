@@ -34,7 +34,7 @@ export const PolarGraph: React.FC<PolarGraphProps> = ({
   const [showGrid, setShowGrid] = useState(true);
   const [showArea, setShowArea] = useState(showAreaProp);
   const [showSecondCurve, setShowSecondCurve] = useState(!!expression2);
-  const [animatedTheta, setAnimatedTheta] = useState(thetaMax);
+  const [animatedTheta] = useState(thetaMax);
 
   useEffect(() => {
     if (!svgRef.current) return;
@@ -92,7 +92,7 @@ export const PolarGraph: React.FC<PolarGraphProps> = ({
 
       // Líneas radiales (cada 30 grados)
       const angles = d3.range(0, 360, 30);
-      angles.forEach((angle) => {
+      angles.forEach((angle: number) => {
         const rad = (angle * Math.PI) / 180;
         g.append('line')
           .attr('x1', 0)

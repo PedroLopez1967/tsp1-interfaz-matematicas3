@@ -3,10 +3,9 @@
  * TSP1 - Matemática III
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Lightbulb, CheckCircle, XCircle, Info } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useProgressStore } from '../store/progressStore';
 import VisualizationPanel from '../components/visualizations/VisualizationPanel';
@@ -33,7 +32,7 @@ export const ProblemSolver: React.FC = () => {
   const [mostrarResultado, setMostrarResultado] = useState(false);
   const [esCorrecta, setEsCorrecta] = useState(false);
   const [feedbackMensaje, setFeedbackMensaje] = useState('');
-  const [tiempoInicio] = useState(new Date());
+  // const [tiempoInicio] = useState(new Date());
 
   const problemas = useProgressStore((state) => state.problemas);
   const incrementAttempts = useProgressStore((state) => state.incrementAttempts);
@@ -47,7 +46,7 @@ export const ProblemSolver: React.FC = () => {
   for (const objetivo of problemsData.objetivos) {
     const found = objetivo.problemas.find(p => p.id === problemId);
     if (found) {
-      problema = found;
+      problema = found as any;
       objetivoId = objetivo.id;
       break;
     }
@@ -128,7 +127,6 @@ export const ProblemSolver: React.FC = () => {
     setMostrarResultado(true);
 
     if (validation.esCorrecta) {
-      const tiempoTranscurrido = Math.floor((new Date().getTime() - tiempoInicio.getTime()) / 1000);
       const penalizacion = pistasUsadas.length * 5;
       const puntajeBase = validation.puntajeParcial || 100;
       const puntaje = Math.max(0, puntajeBase - penalizacion);

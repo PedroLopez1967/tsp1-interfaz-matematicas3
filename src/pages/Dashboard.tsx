@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 import ProgressBar from '../components/common/ProgressBar';
 import { useProgressStore } from '../store/progressStore';
 import problemsData from '../data/problems.json';
-import type { Objective, ObjectiveId } from '../types';
+import type { ObjectiveId } from '../types';
 
 const OBJECTIVE_ICONS: Record<string, string> = {
   'I.1': '⚗️',
@@ -43,8 +43,7 @@ const cardVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: 'easeOut',
-    },
+      },
   },
 };
 
@@ -149,7 +148,7 @@ export const Dashboard: React.FC = () => {
             animate="visible"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {problemsData.objetivos.map((objetivo: Objective, index) => {
+            {problemsData.objetivos.map((objetivo: any) => {
               const status = getObjectiveStatus(objetivo.id);
               const isLocked = status === 'bloqueado';
               const isCompleted = status === 'completado';
@@ -232,7 +231,7 @@ export const Dashboard: React.FC = () => {
                       <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
                         <span>Progreso</span>
                         <span>
-                          {objetivo.problemas.filter(p =>
+                          {objetivo.problemas.filter((p: any) =>
                             problemas[p.id as keyof typeof problemas]?.es_correcto
                           ).length}/{objetivo.problemas.length}
                         </span>
@@ -241,7 +240,7 @@ export const Dashboard: React.FC = () => {
                         <div
                           className={`h-full rounded-full bg-gradient-to-r ${OBJECTIVE_COLORS[objetivo.id]}`}
                           style={{
-                            width: `${(objetivo.problemas.filter(p =>
+                            width: `${(objetivo.problemas.filter((p: any) =>
                               problemas[p.id as keyof typeof problemas]?.es_correcto
                             ).length / objetivo.problemas.length) * 100}%`
                           }}
@@ -269,7 +268,7 @@ export const Dashboard: React.FC = () => {
               transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
               className="text-4xl font-fredoka text-deep-blue mb-2"
             >
-              {Object.values(problemas).filter(p => p.es_correcto).length}/8
+              {Object.values(problemas).filter((p: any) => p.es_correcto).length}/8
             </motion.div>
             <div className="text-gray-600">Problemas Completados</div>
           </motion.div>

@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BookOpen, Trophy, BarChart3, Download, Menu, X, User, LogOut } from 'lucide-react';
+import { Home, BookOpen, Trophy, BarChart3, Download, Menu, X, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useProgressStore } from '../../store/progressStore';
 

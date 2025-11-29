@@ -6,7 +6,7 @@
 import React, { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { Play, Pause, RotateCw, Eye, EyeOff } from 'lucide-react';
+import { Play, Pause, Eye, EyeOff } from 'lucide-react';
 import * as THREE from 'three';
 
 interface Solid3DProps {

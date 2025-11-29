@@ -51,7 +51,7 @@ export const useProgressStore = create<ProgressState>()(
     (set, get) => ({
       // Estado inicial
       studentInfo: null,
-      problemas: {} as Record<ProblemId, ProblemAttempt>,
+      problemas: {} as any as any as any,
       currentProblem: null,
       currentObjective: null,
       porcentaje_completado: 0,
@@ -168,7 +168,7 @@ export const useProgressStore = create<ProgressState>()(
       },
 
       resetProgress: () => set({
-        problemas: {},
+        problemas: {} as any as any,
         currentProblem: null,
         currentObjective: null,
         porcentaje_completado: 0,

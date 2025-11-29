@@ -5,7 +5,7 @@
 
 import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, TrendingUp, TrendingDown, Target, Clock, Lightbulb, Award, Activity } from 'lucide-react';
+import { ArrowLeft, TrendingUp, TrendingDown, Target, Lightbulb, Award, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useProgressStore } from '../store/progressStore';
 import problemsData from '../data/problems.json';
@@ -27,15 +27,13 @@ const cardVariants = {
     y: 0,
     transition: {
       duration: 0.3,
-      ease: 'easeOut',
-    },
+      },
   },
 };
 
 export const StatisticsPage: React.FC = () => {
   const navigate = useNavigate();
   const problemas = useProgressStore((state) => state.problemas);
-  const objetivosCompletados = useProgressStore((state) => state.objetivos_completados);
   const puntajePromedio = useProgressStore((state) => state.puntaje_promedio);
   const porcentajeCompletado = useProgressStore((state) => state.porcentaje_completado);
 

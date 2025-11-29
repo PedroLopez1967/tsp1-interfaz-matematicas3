@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Lock, CheckCircle, PlayCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, PlayCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useProgressStore } from '../store/progressStore';
 import problemsData from '../data/problems.json';
@@ -49,8 +49,7 @@ const cardVariants = {
     x: 0,
     transition: {
       duration: 0.4,
-      ease: 'easeOut',
-    },
+      },
   },
 };
 
@@ -176,12 +175,12 @@ export const ObjectivePage: React.FC = () => {
             className="space-y-6"
           >
             {objetivo.problemas.map((problema, index) => {
-              const status = getProblemStatus(problema);
+              const status = getProblemStatus(problema as any);
               const attempt = problemas[problema.id as keyof typeof problemas];
 
               return (
                 <motion.div
-                  key={problema.id}
+                  key={problema.id as string}
                   variants={cardVariants}
                   whileHover={{ scale: 1.02, x: 5 }}
                   whileTap={{ scale: 0.98 }}

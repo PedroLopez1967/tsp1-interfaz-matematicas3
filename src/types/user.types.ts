@@ -3,8 +3,8 @@
  * TSP1 - Matemática III
  */
 
-import { ProblemId, ObjectiveId } from './problem.types';
-import { ProblemAttempt } from './problem.types';
+import type { ProblemId, ObjectiveId } from './problem.types';
+import type { ProblemAttempt } from './problem.types';
 
 export interface StudentInfo {
   nombre: string;
